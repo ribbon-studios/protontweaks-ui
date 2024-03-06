@@ -1,0 +1,8 @@
+node_modules/
+tweaks/schema.json
+tweaks/tweaks.json
+tweaks/*.md
+# Ignore any sub directories under tweaks
+tweaks/*/
+dist/
+*.py
