@@ -1,13 +1,12 @@
-import type { Tweak } from '@/types';
 import { type FC } from 'react';
 import type { LoaderFunctionArgs } from 'react-router-dom';
-import { fetch } from '../utils/fetch';
 import { useLoaderData } from '@rain-cafe/react-utils/react-router';
 import { AppImage } from '../components/AppImage';
 import { Label } from '../components/Label';
 import { Pill } from '../components/Pill';
 import { Card } from '../components/Card';
 import { Code } from '../components/Code';
+import { getApp } from '@/service/protontweaks';
 
 const ALIASES: Record<string, string> = {
   esync: 'PROTON_NO_ESYNC',
@@ -15,26 +14,28 @@ const ALIASES: Record<string, string> = {
 };
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  return await fetch<Tweak>(`https://api.protontweaks.com/v2/${params.id}.json`);
+  if (!params.id) throw new Error('No app id available.');
+
+  return await getApp(params.id);
 }
 
 export const Component: FC = () => {
-  const tweak = useLoaderData<typeof loader>();
-  const environmentVariables = Object.entries(tweak.tweaks.env);
-  const settings = Object.entries(tweak.tweaks.settings);
+  const app = useLoaderData<typeof loader>();
+  const environmentVariables = Object.entries(app.tweaks.env);
+  const settings = Object.entries(app.tweaks.settings);
 
   return (
     <>
       <div className="flex flex-col gap-2 items-center">
-        <AppImage id={tweak.id} />
+        <AppImage id={app.id} />
         <div className="text-md">
-          {tweak.name} ({tweak.id})
+          {app.name} ({app.id})
         </div>
       </div>
       <Card>
         <Label label="Protontricks Command" />
         <Code shell>
-          protontricks {tweak.id} {tweak.tweaks.tricks.join(' ')}
+          protontricks {app.id} {app.tweaks.tricks.join(' ')}
         </Code>
         <Label label="Launch Options" />
         <Code>
@@ -50,7 +51,7 @@ export const Component: FC = () => {
       </Card>
       <Card>
         <Label label="Tricks">
-          {tweak.tweaks.tricks.map((trick, index) => (
+          {app.tweaks.tricks.map((trick, index) => (
             <Pill key={index}>{trick}</Pill>
           ))}
         </Label>

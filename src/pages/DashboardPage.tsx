@@ -1,22 +1,19 @@
 import { type FC, useMemo, useEffect } from 'react';
-import { fetch } from '../utils/fetch';
-import type { Tweaks } from '@/types';
 import { useLoaderData } from '@rain-cafe/react-utils/react-router';
 import { useSearch } from '../context/search';
 import { AppImage } from '../components/AppImage';
+import { getApps } from '@/service/protontweaks';
 
 export async function loader() {
-  return {
-    tweaks: await fetch<Tweaks>('https://api.protontweaks.com/v2/tweaks.json'),
-  };
+  return await getApps();
 }
 
 export const Component: FC = () => {
-  const { tweaks } = useLoaderData<typeof loader>();
+  const apps = useLoaderData<typeof loader>();
   const search = useSearch();
-  const filteredTweaks = useMemo(() => {
-    return tweaks.tweaks.filter((tweak) => tweak.name.toLowerCase().includes(search.toLowerCase()));
-  }, [tweaks, search]);
+  const filteredApps = useMemo(() => {
+    return apps.filter((app) => app.name.toLowerCase().includes(search.toLowerCase()));
+  }, [apps, search]);
 
   useEffect(() => {
     const listener = () => {};
@@ -31,8 +28,8 @@ export const Component: FC = () => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5 mx-auto">
-      {filteredTweaks?.map((tweak) => (
-        <AppImage key={tweak.id} id={tweak.id} to={`/tweaks/${tweak.id}`} />
+      {filteredApps?.map((app) => (
+        <AppImage key={app.id} id={app.id} to={`/apps/${app.id}`} />
       ))}
     </div>
   );

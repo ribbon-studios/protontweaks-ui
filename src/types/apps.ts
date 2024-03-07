@@ -1,10 +1,10 @@
-export type Tweaks = {
+export type AppsList = {
   sha: string;
   short_sha: string;
-  tweaks: Pick<Tweak, 'id' | 'name'>[];
+  apps: Pick<App, 'id' | 'name'>[];
 };
 
-export type Tweak = {
+export type App = {
   id: string;
   name: string;
   tweaks: {

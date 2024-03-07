@@ -1,4 +1,4 @@
-name: Deploy tweaks to GitHub Pages
+name: Deploy App to GitHub Pages
 
 on:
   push:
@@ -31,10 +31,6 @@ jobs:
           bun-version: latest
 
       - run: bun ci
-
-      - name: Validate Tweaks
-        run: bun test
-
       - run: bun run build
 
       - name: Setup Pages
