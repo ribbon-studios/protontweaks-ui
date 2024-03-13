@@ -11,8 +11,8 @@ export type App = {
     tricks: string[];
     env: Record<string, string>;
     settings: {
-      esync?: boolean;
-      fsync?: boolean;
+      gamemode?: boolean;
+      mangohud?: boolean;
     };
   };
   issues: {
