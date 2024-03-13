@@ -54,8 +54,8 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
           <Button
             to={
               id
-                ? `https://github.com/rain-cafe/protontweaks-db/edit/main/tweaks/${id}.json`
-                : 'https://github.com/rain-cafe/protontweaks-db/tree/main/tweaks'
+                ? `https://github.com/rain-cafe/protontweaks-db/edit/main/apps/${id}.json`
+                : 'https://github.com/rain-cafe/protontweaks-db/tree/main/apps'
             }
           >
             <Edit />
