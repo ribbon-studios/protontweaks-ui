@@ -1,0 +1,11 @@
+.buttons {
+  @apply flex gap-[1px] flex-wrap;
+
+  > * {
+    @apply rounded-none flex-grow;
+  }
+
+  &.vertical {
+    @apply flex-col;
+  }
+}

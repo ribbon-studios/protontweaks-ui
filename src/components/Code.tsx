@@ -14,7 +14,7 @@ export const Code: FC<Props> = ({ className, children, shell = false }) => {
   return (
     <div
       className={cn(
-        'relative select-none whitespace-pre-wrap flex flex-row items-start gap-2 rounded-md bg-white/10 px-4 py-2 hover:bg-white/20 transition-colors cursor-pointer pr-10',
+        'text-left relative select-none whitespace-pre-wrap flex flex-row items-start gap-2 rounded-md bg-white/10 px-4 py-2 hover:bg-white/20 transition-colors cursor-pointer pr-10',
         shell && "before:content-['$']",
         className
       )}

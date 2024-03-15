@@ -1,17 +1,23 @@
 import { useState, type FC } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { AppHeader } from '../../components/AppHeader';
 import { SearchContext } from '../../context/search';
 
 export const Component: FC = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get('search') ?? '');
 
   return (
     <SearchContext.Provider value={search}>
       <AppHeader
         onChange={(value) => {
-          navigate('/');
+          navigate({
+            pathname: '/apps',
+            search: `?${createSearchParams({
+              search: value,
+            })}`,
+          });
           setSearch(value);
         }}
       />

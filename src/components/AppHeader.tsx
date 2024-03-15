@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowUp, Edit } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Button } from './Button';
+import { Input } from './Input';
 
 type Props = {
   onChange?: (value: string) => void;
@@ -30,10 +31,10 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
     <>
       <div
         className={cn(
-          'fixed inset-x-0 top-0 from-gray-900 from-30% to-transparent bg-gradient-to-b h-64 z-50 opacity-0 transition-opacity pointer-events-none',
+          'fixed inset-x-0 top-0 from-gray-900 from-30% to-transparent bg-gradient-to-b h-64 z-30 opacity-0 transition-opacity pointer-events-none',
           sticky && 'opacity-100'
         )}
-      ></div>
+      />
       <div
         className={cn(
           'flex flex-col sm:flex-row sm:items-center gap-4 px-3 sm:px-8 py-3 bg-gray-950 sticky top-0 z-50 transition-all',
@@ -44,14 +45,9 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
           Protontweaks
         </Link>
         <div className="flex flex-1 gap-4">
-          <input
-            type="text"
-            className="flex-1 bg-white/10 rounded-md min-h-12 px-3 text-xl"
-            value={search}
-            placeholder="Search"
-            onChange={(e) => onChange?.(e.target.value)}
-          />
+          <Input value={search} placeholder="Search" onChange={onChange} />
           <Button
+            className="flex-shrink-0 bg-accent"
             to={
               id
                 ? `https://github.com/rain-cafe/protontweaks-db/edit/main/apps/${id}.json`
@@ -64,7 +60,7 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
       </div>
       <Button
         className={cn(
-          'fixed top-20 opacity-0 pointer-events-none left-1/2 -translate-x-1/2 z-50 transition-all rounded-full px-4 bg-white/80 text-black hover:bg-white',
+          'fixed top-28 sm:top-20 opacity-0 pointer-events-none left-1/2 -translate-x-1/2 z-40 transition-all rounded-full px-4 bg-white/80 text-black hover:bg-white',
           sticky && 'top-36 sm:top-28 opacity-100 pointer-events-auto'
         )}
         to="#root"

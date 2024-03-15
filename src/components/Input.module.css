@@ -1,0 +1,15 @@
+.input {
+  @apply relative;
+
+  &:not(.disabled) {
+    &:after {
+      content: '';
+
+      @apply absolute pointer-events-none inset-0 bg-white/10 opacity-0 transition-opacity;
+    }
+
+    &:hover:after {
+      @apply opacity-100;
+    }
+  }
+}
