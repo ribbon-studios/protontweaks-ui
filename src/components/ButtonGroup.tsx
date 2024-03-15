@@ -6,13 +6,27 @@ type Props = {
   label: ReactNode;
   children: ReactNode;
   vertical?: boolean;
+  className?: string;
 };
 
-export const ButtonGroup: FC<Props> = ({ label, children, vertical }) => {
+export const ButtonGroup: FC<Props> = ({ label, children, vertical, className }) => {
   return (
-    <div className="flex flex-col rounded-md overflow-hidden bg-secondary w-full">
-      <div className="flex items-center justify-between gap-2 p-4 border-b border-b-white/10 font-bold">{label}</div>
-      <div className={cn(styles.buttons, vertical && styles.vertical)}>{children}</div>
+    <div
+      className={cn(
+        'flex rounded-md overflow-hidden bg-secondary w-full',
+        vertical ? 'flex-col' : 'flex-row',
+        className
+      )}
+    >
+      <div
+        className={cn(
+          'flex items-center justify-between gap-2 p-4 whitespace-nowrap font-bold',
+          vertical ? 'border-b border-b-white/10' : 'border-r border-r-white/10'
+        )}
+      >
+        {label}
+      </div>
+      <div className={cn(styles.buttons, 'flex-1')}>{children}</div>
     </div>
   );
 };

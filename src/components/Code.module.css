@@ -1,6 +1,4 @@
-.input {
-  @apply relative;
-
+.code {
   &:not(.disabled) {
     &:after {
       content: '';

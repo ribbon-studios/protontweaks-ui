@@ -1,5 +1,9 @@
 .appImage {
-  @apply relative rounded-md overflow-hidden;
+  @apply relative rounded-md;
+
+  > * {
+    border-radius: inherit;
+  }
 }
 
 a.appImage {

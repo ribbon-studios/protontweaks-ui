@@ -5,7 +5,6 @@ import { ArrowUp, Edit } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Button } from './Button';
 import { Input } from './Input';
-import * as styles from './AppHeader.module.css';
 
 type Props = {
   onChange?: (value: string) => void;

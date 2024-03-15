@@ -16,7 +16,7 @@ export const Pill: FC<Props> = ({ children, variant }) => {
   return (
     <div
       className={cn(
-        'rounded-full bg-white/20 px-3 min-h-10 items-center inline-flex',
+        'rounded-full bg-secondary px-3 min-h-10 items-center inline-flex',
         variant && VariantClasses[variant]
       )}
     >

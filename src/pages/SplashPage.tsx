@@ -28,6 +28,7 @@ export const Component: FC = () => {
                 <CodeIcon />
               </>
             }
+            vertical
           >
             <Button to="https://github.com/rain-cafe/protontweaks">
               CLI
@@ -50,6 +51,7 @@ export const Component: FC = () => {
                 <LibraryBig />
               </>
             }
+            vertical
           >
             <Button to="https://github.com/rain-cafe/protontweaks-api-rs">
               Rust

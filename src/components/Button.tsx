@@ -7,6 +7,7 @@ type SharedProps = {
   children?: ReactNode;
   className?: string;
   disabled?: boolean;
+  variant?: 'slim' | 'default';
 };
 
 type LinkProps = SharedProps & {
@@ -24,12 +25,18 @@ const isLink = (props: Props): props is LinkProps => {
   return Object.hasOwn(props, 'to');
 };
 
-export const Button: FC<Props> = (props) => {
+const variantsClassnames: Partial<Record<NonNullable<SharedProps['variant']>, string>> = {
+  default: 'min-h-14',
+  slim: 'min-h-10',
+};
+
+export const Button: FC<Props> = ({ className: externalClassname, variant = 'default', ...props }) => {
   const className = cn(
     styles.button,
-    'flex relative gap-2 items-center justify-center min-w-14 min-h-14 bg-secondary border border-transparent px-3 transition-all overflow-hidden rounded-md',
+    variantsClassnames[variant],
+    'flex relative gap-2 items-center justify-center min-w-14 bg-secondary border border-transparent px-3 transition-all overflow-hidden rounded-md',
     props.disabled && 'text-white/20 pointer-events-none',
-    props.className
+    externalClassname
   );
   if (isLink(props)) {
     if (props.to.startsWith('#')) {

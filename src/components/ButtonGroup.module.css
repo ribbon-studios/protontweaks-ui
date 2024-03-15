@@ -1,12 +1,8 @@
 .buttons {
-  @apply grid grid-cols-[repeat(3,minmax(min-content,1fr))];
+  @apply grid grid-flow-col;
   /* @apply flex gap-[1px] flex-wrap; */
 
   > * {
     @apply rounded-none flex-grow;
-  }
-
-  &.vertical {
-    @apply flex-col;
   }
 }

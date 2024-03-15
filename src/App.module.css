@@ -1,8 +1,6 @@
 .background {
-  &:after {
+  &:before {
     content: '';
-    width: 72.1875rem;
-    left: calc(50% - 30rem);
     opacity: 0.2;
     clip-path: polygon(
       74.1% 44.1%,
@@ -22,8 +20,10 @@
       76.1% 97.7%,
       74.1% 44.1%
     );
-    @apply absolute h-[30rem] blur-3xl rotate-[30deg] from-[#ff80b5] to-[#9089fc] -translate-x-1/2 aspect-[1155/678] bg-gradient-to-tr transform-gpu;
+    @apply absolute inset-x-0 min-h-[20%] from-[#ff80b5] to-[#9089fc] bg-gradient-to-tr transform-gpu animate-pulse;
+
+    animation-duration: 10s;
   }
 
-  @apply absolute inset-x-0 blur-3xl -top-80 -z-50;
+  @apply fixed inset-x-0 min-h-dvh blur-3xl -z-50 max-w-5xl items-center flex flex-col mx-auto;
 }

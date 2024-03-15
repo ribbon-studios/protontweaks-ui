@@ -7,5 +7,5 @@ type Props = {
 };
 
 export const Card: FC<Props> = ({ className, children }) => {
-  return <div className={cn('flex flex-col gap-4 rounded-md bg-black/20 p-4', className)}>{children}</div>;
+  return <div className={cn('flex flex-col gap-4 rounded-md bg-gray-950/40 p-4', className)}>{children}</div>;
 };

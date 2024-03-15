@@ -13,6 +13,7 @@ export default defineConfig(async () => {
     server: {
       port: 3030,
       hmr: true,
+      host: '0.0.0.0',
     },
     resolve: {
       alias: {
