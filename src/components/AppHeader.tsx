@@ -5,6 +5,7 @@ import { ArrowUp, Edit } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Button } from './Button';
 import { Input } from './Input';
+import * as styles from './AppHeader.module.css';
 
 type Props = {
   onChange?: (value: string) => void;
@@ -31,14 +32,14 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
     <>
       <div
         className={cn(
-          'fixed inset-x-0 top-0 from-gray-900 from-30% to-transparent bg-gradient-to-b h-64 z-30 opacity-0 transition-opacity pointer-events-none',
+          'fixed inset-x-0 top-0 from-zinc-950 from-30% to-transparent bg-gradient-to-b h-64 z-30 opacity-0 transition-opacity pointer-events-none',
           sticky && 'opacity-100'
         )}
       />
       <div
         className={cn(
-          'flex flex-col sm:flex-row sm:items-center gap-4 px-3 sm:px-8 py-3 bg-gray-950 sticky top-0 z-50 transition-all',
-          sticky && 'sm:mx-5 sm:top-5 sm:rounded-full'
+          'flex flex-col sm:flex-row sm:items-center gap-4 px-3 sm:px-8 py-3 bg-gray-950 sticky top-0 z-50 transition-all border border-transparent border-b-white/10',
+          sticky && 'sm:mx-5 sm:top-5 sm:rounded-full border-white/10'
         )}
       >
         <Link to="/" className="text-2xl text-center hover:text-pink-300 transition-colors" role="heading">
