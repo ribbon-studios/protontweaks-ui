@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 import type { LoaderFunctionArgs } from 'react-router-dom';
 import { useLoaderData } from '@rain-cafe/react-utils/react-router';
-import { AppImage } from '../components/AppImage';
-import { Label } from '../components/Label';
-import { Pill, appSettingStatustoVariant } from '../components/Pill';
-import { Card } from '../components/Card';
-import { Code } from '../components/Code';
+import { AppImage } from '../../components/AppImage';
+import { Label } from '../../components/Label';
+import { Pill, appSettingStatustoVariant } from '../../components/Pill';
+import { Card } from '../../components/Card';
+import { Code } from '../../components/Code';
 import { getApp, getAppSettingStatus } from '@/service/protontweaks';
 import type { App } from '@/types';
 

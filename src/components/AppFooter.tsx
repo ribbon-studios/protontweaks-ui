@@ -5,7 +5,7 @@ import { Button } from './Button';
 
 export const AppFooter: FC = () => {
   return (
-    <div className="flex gap-4 px-4 py-3 bg-zinc-900 items-center">
+    <div className="flex gap-4 px-4 py-3 bg-gray-950 items-center">
       <div className="flex flex-col gap-2 flex-1 text-white/70">
         <div>
           Built with ❤️ by the{' '}

@@ -30,13 +30,13 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
     <>
       <div
         className={cn(
-          'fixed inset-x-0 top-0 from-black from-30% to-transparent bg-gradient-to-b h-64 z-50 opacity-0 transition-opacity pointer-events-none',
+          'fixed inset-x-0 top-0 from-gray-900 from-30% to-transparent bg-gradient-to-b h-64 z-50 opacity-0 transition-opacity pointer-events-none',
           sticky && 'opacity-100'
         )}
       ></div>
       <div
         className={cn(
-          'flex flex-col sm:flex-row sm:items-center gap-4 px-3 sm:px-8 py-3 bg-zinc-900 sticky top-0 z-50 transition-all',
+          'flex flex-col sm:flex-row sm:items-center gap-4 px-3 sm:px-8 py-3 bg-gray-950 sticky top-0 z-50 transition-all',
           sticky && 'sm:mx-5 sm:top-5 sm:rounded-full'
         )}
       >

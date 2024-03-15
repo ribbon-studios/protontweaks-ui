@@ -13,11 +13,21 @@ const router = createHashRouter([
     children: [
       {
         path: '/',
-        lazy: () => import('./pages/DashboardPage'),
+        lazy: () => import('./pages/SplashPage'),
       },
       {
-        path: '/apps/:id',
-        lazy: () => import('./pages/AppPage'),
+        path: '/apps',
+        lazy: () => import('./pages/apps/Layout'),
+        children: [
+          {
+            path: '/apps',
+            lazy: () => import('./pages/apps/SearchPage'),
+          },
+          {
+            path: '/apps/:id',
+            lazy: () => import('./pages/apps/AppPage'),
+          },
+        ],
       },
     ],
   },

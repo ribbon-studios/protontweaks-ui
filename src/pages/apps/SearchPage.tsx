@@ -1,7 +1,7 @@
 import { type FC, useMemo, useEffect } from 'react';
 import { useLoaderData } from '@rain-cafe/react-utils/react-router';
-import { useSearch } from '../context/search';
-import { AppImage } from '../components/AppImage';
+import { useSearch } from '../../context/search';
+import { AppImage } from '../../components/AppImage';
 import { getApps } from '@/service/protontweaks';
 
 export async function loader() {

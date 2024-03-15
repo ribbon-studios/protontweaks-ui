@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 body {
-  @apply flex flex-col bg-zinc-800 text-white bg-gradient-to-br h-dvh max-w-[100vw] overflow-x-hidden;
+  font-family: Inter var, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+  @apply flex flex-col bg-gray-900 text-white bg-gradient-to-br h-dvh max-w-[100vw] overflow-x-hidden;
 }
 
 #root {
-  @apply flex flex-1 flex-col gap-4;
+  @apply flex flex-1 flex-col;
 }
