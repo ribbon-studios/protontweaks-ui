@@ -1,5 +1,6 @@
 .buttons {
-  @apply flex gap-[1px] flex-wrap;
+  @apply grid grid-cols-[repeat(3,minmax(min-content,1fr))];
+  /* @apply flex gap-[1px] flex-wrap; */
 
   > * {
     @apply rounded-none flex-grow;
