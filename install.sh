@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+# TODO: Make this smarter so we don't have to update it every release
+VERSION="0.5.1"
+DEB_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.deb"
+RPM_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.rpm"
+
 managers=()
 
 has_manager() {
@@ -78,14 +83,14 @@ case $manager in
   ;;
   "apt-get")
     echo "Downloading debian package..."
-    curl -fsSL https://github.com/rain-cafe/protontweaks/releases/download/v0.5.1/protontweaks.deb -o /tmp/protontweaks.deb
+    curl -fsSL $DEB_PACKAGE -o /tmp/protontweaks.deb
     echo_overwrite "Downloading debian package... Complete!\n"
     sudo_inform "To install the protontweaks debian package with apt-get." apt-get install /tmp/protontweaks.deb
     rm -f /tmp/protontweaks.deb
     ;;
   "rpm")
     echo "Downloading rpm package..."
-    curl -fsSL https://github.com/rain-cafe/protontweaks/releases/download/v0.5.1/protontweaks.rpm -o /tmp/protontweaks.rpm
+    curl -fsSL $RPM_PACKAGE -o /tmp/protontweaks.rpm
     echo_overwrite "Downloading rpm package... Complete!\n"
     sudo_inform "To install the protontweaks rpm package with rpm." rpm -i /tmp/protontweaks.rpm
     rm -f /tmp/protontweaks.rpm
