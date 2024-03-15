@@ -8,6 +8,21 @@ RPM_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSI
 
 managers=()
 
+case "$OSTYPE" in
+  "darwin")
+    echo "MacOS is not supported!"
+    exit 1
+    ;;
+  "cygwin"|"msys"|"win32")
+    echo "Windows is not supported!"
+    exit 1
+    ;;
+  "freebsd")
+    echo "FreeBSD is not supported!"
+    exit 1
+    ;;
+esac
+
 has_manager() {
   if [[ ! -z "$(type -p $1)" ]]; then
     managers+=($1);
