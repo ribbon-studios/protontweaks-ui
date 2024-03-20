@@ -38,9 +38,9 @@ export const Component: FC = () => {
       </Card>
       <Card>
         <Label label="Tricks">
-          {app.tweaks.tricks.map((trick, index) => (
-            <Pill key={index}>{trick}</Pill>
-          ))}
+          {app.tweaks.tricks.length === 0
+            ? 'None'
+            : app.tweaks.tricks.map((trick, index) => <Pill key={index}>{trick}</Pill>)}
         </Label>
         <Label label="Environment Variables">
           {environmentVariables.length === 0
