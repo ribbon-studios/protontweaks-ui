@@ -10,6 +10,7 @@ export type App = {
   tweaks: {
     tricks: string[];
     env: Record<string, string>;
+    args: string[];
     settings: {
       gamemode?: boolean;
       mangohud?: boolean;

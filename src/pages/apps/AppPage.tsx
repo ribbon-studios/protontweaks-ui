@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { useMemo, type FC } from 'react';
 import type { LoaderFunctionArgs } from 'react-router-dom';
 import { useLoaderData } from '@rain-cafe/react-utils/react-router';
 import { AppImage } from '../../components/AppImage';
@@ -6,7 +6,7 @@ import { Label } from '../../components/Label';
 import { Pill, appSettingStatustoVariant } from '../../components/Pill';
 import { Card } from '../../components/Card';
 import { Code } from '../../components/Code';
-import { getApp, getAppSettingStatus } from '@/service/protontweaks';
+import { getApp, getAppSettingStatus, toLaunchOptions } from '@/service/protontweaks';
 import type { App } from '@/types';
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -18,6 +18,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export const Component: FC = () => {
   const app = useLoaderData<typeof loader>();
   const environmentVariables = Object.entries(app.tweaks.env);
+  const launchOptions = useMemo(() => toLaunchOptions(app), [app]);
 
   return (
     <>
@@ -33,10 +34,7 @@ export const Component: FC = () => {
           protontricks {app.id} {app.tweaks.tricks.join(' ')}
         </Code>
         <Label label="Launch Options" />
-        <Code>
-          {environmentVariables.map(([key, value]) => `${key}=${value} `).join()}
-          %command%
-        </Code>
+        <Code>{launchOptions}</Code>
       </Card>
       <Card>
         <Label label="Tricks">

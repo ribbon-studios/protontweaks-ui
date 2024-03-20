@@ -34,3 +34,17 @@ export function getAppSettingStatus(app: App, key: keyof App['tweaks']['settings
 
   return value ? AppSettingStatus.SUPPORTED : AppSettingStatus.UNSUPPORTED;
 }
+
+export function toLaunchOptions(app: App) {
+  const environmentVariables = Object.entries(app.tweaks.env);
+
+  const launchOptions = [];
+
+  launchOptions.push(...environmentVariables.map(([key, value]) => `${key}=${value}`));
+  launchOptions.push('%command%');
+  launchOptions.push(...app.tweaks.args);
+
+  console.log(launchOptions);
+
+  return launchOptions.join(' ');
+}
