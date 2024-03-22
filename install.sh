@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-# TODO: Make this smarter so we don't have to update it every release
-VERSION="0.5.1"
+# We're pulling from the latest web page to prevent rate limiting
+VERSION=$(curl -fsSL "https://github.com/rain-cafe/protontweaks/releases/latest" | grep -E -m 1 "/rain-cafe/protontweaks/tree/" | grep -Eo -m 1 "v[0-9]+.[0-9]+.[0-9]+" | head -1)
+
+echo "Detected '$VERSION' as the latest version."
+
 DEB_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.deb"
 RPM_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.rpm"
 
@@ -112,5 +115,9 @@ case $manager in
 esac
 
 echo "Install completed successfully!"
+
+if [[ $manager != "nixos" && $manager != "nix" ]]; then
+  protontweaks setup
+fi
 
 
