@@ -15,18 +15,10 @@ export const AppFooter: FC = () => {
           Team~
         </div>
         <div>
-          This site uses data from Steam as well as data provided by{' '}
+          This site uses data from Steam as well as app images provided by{' '}
           <Link className="underline" to="https://steamdb.info" target="_blank">
             SteamDB
           </Link>{' '}
-          via{' '}
-          <Link
-            className="underline"
-            to="https://www.algolia.com/?utm_source=steamdb_search&utm_medium=link&utm_term=logo&utm_campaign=steamdb"
-            target="_blank"
-          >
-            Algolia
-          </Link>
           .
         </div>
         <div>
