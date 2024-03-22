@@ -11,7 +11,7 @@ export const Component: FC = () => {
       <div className="flex flex-col items-center mt-24 gap-4 text-center mx-4">
         <h1 className="text-4xl sm:text-6xl xl:text-7xl font-bold">Simplified Linux Gaming</h1>
         <h2 className={`text-4xl sm:text-5xl xl:text-6xl font-bold ${styles.rainbow}`}>Protontweaks</h2>
-        <Code>curl -fsSL {location.origin}/install.sh | bash</Code>
+        <Code shell>bash -c "$(curl -fsSL {location.origin}/install.sh)"</Code>
         <div className="italic sm:max-w-lg">
           The command above will detect the available package managers on your system and provide you various options
           for installation.
