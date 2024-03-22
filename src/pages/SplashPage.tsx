@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import * as styles from './SplashPage.module.css';
 import { Code } from '@/components/Code';
 import { Button } from '@/components/Button';
-import { Code2, CodeIcon, ExternalLink, LibraryBig } from 'lucide-react';
+import { CodeIcon, ExternalLink, LibraryBig } from 'lucide-react';
 import { ButtonGroup } from '@/components/ButtonGroup';
 
 export const Component: FC = () => {
