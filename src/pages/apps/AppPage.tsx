@@ -58,6 +58,7 @@ export const Component: FC = () => {
         </ButtonGroup>
       </div>
       <Card>
+        <h3 className="text-lg font-bold">Outputs</h3>
         <Label label="Protontricks Command" />
         <Code shell>
           protontricks {app.id} {app.tweaks.tricks.join(' ')}
@@ -66,6 +67,7 @@ export const Component: FC = () => {
         <Code>{launchOptions}</Code>
       </Card>
       <Card>
+        <h3 className="text-lg font-bold">Inputs</h3>
         <Label label="Tricks">
           {app.tweaks.tricks.length === 0
             ? 'None'
@@ -82,19 +84,32 @@ export const Component: FC = () => {
         </Label>
       </Card>
       <Card>
+        <h3 className="text-lg font-bold">Settings</h3>
         {(['gamemode', 'mangohud'] satisfies (keyof App['tweaks']['settings'])[]).map((key) => {
           const status = getAppSettingStatus(app, key);
           const variant = appSettingStatustoVariant(status);
 
           return (
-            <Label label={key}>
-              <Pill key={key} variant={variant}>
-                {status}
-              </Pill>
+            <Label label={key} key={key}>
+              <Pill variant={variant}>{status}</Pill>
             </Label>
           );
         })}
       </Card>
+      {app.issues.length > 0 && (
+        <Card>
+          <h3 className="text-lg font-bold">Issues</h3>
+          <div className="flex justify-between">
+            <Label label="Description" />
+            <Label label="Solution" />
+          </div>
+          {app.issues.map((issue, index) => (
+            <Label key={index} label={issue.description}>
+              {issue.solution ? <Pill variant={'success'}>{issue.solution}</Pill> : 'None'}
+            </Label>
+          ))}
+        </Card>
+      )}
       {/* <Card>
         <Label label="API Info">
           <Pill>Version = V2</Pill>
