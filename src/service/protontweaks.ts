@@ -40,11 +40,9 @@ export function toLaunchOptions(app: App) {
 
   const launchOptions = [];
 
-  launchOptions.push(...environmentVariables.map(([key, value]) => `${key}=${value}`));
+  launchOptions.push(...environmentVariables.map(([key, value]) => `${key}="${value}"`));
   launchOptions.push('%command%');
   launchOptions.push(...app.tweaks.args);
-
-  console.log(launchOptions);
 
   return launchOptions.join(' ');
 }
