@@ -30,15 +30,15 @@ export const Component: FC = () => {
             }
             vertical
           >
-            <Button to="https://github.com/rain-cafe/protontweaks">
+            <Button to="https://github.com/ribbon-studios/protontweaks">
               CLI
               <ExternalLink size={20} />
             </Button>
-            <Button to="https://github.com/rain-cafe/protontweaks-ui">
+            <Button to="https://github.com/ribbon-studios/protontweaks-ui">
               App
               <ExternalLink size={20} />
             </Button>
-            <Button to="https://github.com/rain-cafe/protontweaks-db">
+            <Button to="https://github.com/ribbon-studios/protontweaks-db">
               Database
               <ExternalLink size={20} />
             </Button>
@@ -53,15 +53,15 @@ export const Component: FC = () => {
             }
             vertical
           >
-            <Button to="https://github.com/rain-cafe/protontweaks-api-rs">
+            <Button to="https://github.com/ribbon-studios/protontweaks-api-rs">
               Rust
               <ExternalLink size={20} />
             </Button>
-            <Button to="https://github.com/rain-cafe/protontweaks-api-js" disabled>
+            <Button to="https://github.com/ribbon-studios/protontweaks-api-js" disabled>
               NodeJS
               <ExternalLink size={20} />
             </Button>
-            <Button to="https://github.com/rain-cafe/protontweaks-db" disabled>
+            <Button to="https://github.com/ribbon-studios/protontweaks-db" disabled>
               Python
               <ExternalLink size={20} />
             </Button>

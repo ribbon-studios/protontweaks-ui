@@ -2,12 +2,12 @@
 set -e
 
 # We're pulling from the latest web page to prevent rate limiting
-VERSION=$(curl -fsSL "https://github.com/rain-cafe/protontweaks/releases/latest" | grep -E -m 1 "/rain-cafe/protontweaks/tree/" | grep -Eo -m 1 "v[0-9]+.[0-9]+.[0-9]+" | head -1)
+VERSION=$(curl -fsSL "https://github.com/ribbon-studios/protontweaks/releases/latest" | grep -E -m 1 "/ribbon-studios/protontweaks/tree/" | grep -Eo -m 1 "v[0-9]+.[0-9]+.[0-9]+" | head -1)
 
 echo "Detected '$VERSION' as the latest version."
 
-DEB_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.deb"
-RPM_PACKAGE="https://github.com/rain-cafe/protontweaks/releases/download/v$VERSION/protontweaks.rpm"
+DEB_PACKAGE="https://github.com/ribbon-studios/protontweaks/releases/download/v$VERSION/protontweaks.deb"
+RPM_PACKAGE="https://github.com/ribbon-studios/protontweaks/releases/download/v$VERSION/protontweaks.rpm"
 
 managers=()
 
@@ -97,7 +97,7 @@ continue_prompt "Would you like to continue with the installation?"
 case $manager in
   "nixos"|"nix")
     echo "Opening instructions, please read the 'NixOS Flake Example' and add it to your configuration!"
-    xdg-open "https://github.com/rain-cafe/protontweaks?tab=readme-ov-file#installation"
+    xdg-open "https://github.com/ribbon-studios/protontweaks?tab=readme-ov-file#installation"
   ;;
   "apt-get")
     echo "Downloading debian package..."

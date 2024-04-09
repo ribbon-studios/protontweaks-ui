@@ -9,8 +9,8 @@ export const AppFooter: FC = () => {
       <div className="flex flex-col gap-2 flex-1 text-white/70">
         <div>
           Built with ❤️ by the{' '}
-          <Link className="underline" to="https://github.com/rain-cafe" target="_blank">
-            Rainbow Cafe
+          <Link className="underline" to="https://github.com/ribbon-studios" target="_blank">
+            Ribbon Studios
           </Link>{' '}
           Team~
         </div>
@@ -27,10 +27,10 @@ export const AppFooter: FC = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <Button to="https://github.com/rain-cafe/protontweaks-ui/issues">
+        <Button to="https://github.com/ribbon-studios/protontweaks-ui/issues">
           <Bug />
         </Button>
-        <Button to="https://github.com/rain-cafe/protontweaks-ui">
+        <Button to="https://github.com/ribbon-studios/protontweaks-ui">
           <Code2 />
         </Button>
       </div>

@@ -30,7 +30,7 @@ export const Component: FC = () => {
 
   return filteredApps.length === 0 ? (
     <ButtonGroup className="w-fit self-center" label="Can't find the game you're looking for?" vertical>
-      <Button variant="slim" to="https://github.com/rain-cafe/protontweaks-db/tree/main/apps">
+      <Button variant="slim" to="https://github.com/ribbon-studios/protontweaks-db/tree/main/apps">
         Help us out and add it!~ ❤️
       </Button>
     </ButtonGroup>

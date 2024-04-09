@@ -50,8 +50,8 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
             className="flex-shrink-0 bg-accent"
             to={
               id
-                ? `https://github.com/rain-cafe/protontweaks-db/edit/main/apps/${id}.json`
-                : 'https://github.com/rain-cafe/protontweaks-db/tree/main/apps'
+                ? `https://github.com/ribbon-studios/protontweaks-db/edit/main/apps/${id}.json`
+                : 'https://github.com/ribbon-studios/protontweaks-db/tree/main/apps'
             }
           >
             <Edit />
