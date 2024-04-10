@@ -1,6 +1,6 @@
 import { useMemo, type FC } from 'react';
 import type { LoaderFunctionArgs } from 'react-router-dom';
-import { useLoaderData } from '@rain-cafe/react-utils/react-router';
+import { useLoaderData } from '@ribbon-studios/react-utils/react-router';
 import { AppImage } from '../../components/AppImage';
 import { Label } from '../../components/Label';
 import { Pill, appSettingStatustoVariant } from '../../components/Pill';

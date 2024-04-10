@@ -1,7 +1,7 @@
 import { type FC, type ComponentProps } from 'react';
 import { cn } from '../utils/cn';
 import { X } from 'lucide-react';
-import { useCachedState } from '@rain-cafe/react-utils';
+import { useCachedState } from '@ribbon-studios/react-utils';
 
 type Props = {
   onChange?: (value: string) => void;

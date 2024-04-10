@@ -1,7 +1,7 @@
 import { useState, type FC, type ReactNode, useEffect } from 'react';
 import { CircleCheck, LoaderIcon } from 'lucide-react';
 import { cn } from '@/utils/cn';
-import { delay } from '@rain-cafe/js-utils';
+import { delay } from '@ribbon-studios/js-utils';
 
 type Props = {
   children: ReactNode;

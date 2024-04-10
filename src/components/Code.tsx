@@ -1,7 +1,7 @@
 import { useState, type FC, type ReactNode } from 'react';
 import { cn } from '../utils/cn';
 import { toast } from 'sonner';
-import { delay } from '@rain-cafe/js-utils';
+import { delay } from '@ribbon-studios/js-utils';
 import { Clipboard, LoaderIcon } from 'lucide-react';
 import * as styles from './Code.module.css';
 import { Spinner } from './Spinner';
