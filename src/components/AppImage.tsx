@@ -19,7 +19,7 @@ export const AppImage: FC<Props> = ({ className, app, to }) => {
         <div className={styles.name}>{app.name}</div>
       </div>
       <img src={url} />
-      <img className="blur-none group-hover:blur absolute inset-0 -z-10 transition-all" src={url} />
+      <img className="blur-none group-hover:blur group-focus:blur absolute inset-0 -z-10 transition-all" src={url} />
     </Link>
   ) : (
     <div className={cn(styles.appImage, className)}>
