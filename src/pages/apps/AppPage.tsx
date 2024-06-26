@@ -26,7 +26,7 @@ export const Component: FC = () => {
   return (
     <>
       <div className="flex flex-col gap-2 items-center">
-        <AppImage id={app.id} />
+        <AppImage app={app} />
         <div className="text-md">
           {app.name} ({app.id})
         </div>

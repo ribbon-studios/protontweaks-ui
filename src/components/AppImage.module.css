@@ -14,4 +14,15 @@ a.appImage {
 
     @apply rounded-md pointer-events-none opacity-0 inset-0 absolute bg-white/10 transition-opacity hover:opacity-100;
   }
+
+  &:hover .name {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+.name {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+
+  @apply flex justify-center py-2 bg-black/50 rounded-t-none font-bold text-lg translate-y-full opacity-0 transition-all;
 }
