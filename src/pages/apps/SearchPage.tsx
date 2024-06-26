@@ -1,21 +1,30 @@
-import { type FC, useMemo, useEffect } from 'react';
-import { useLoaderData } from '@ribbon-studios/react-utils/react-router';
+import { type FC, useEffect, useState } from 'react';
 import { useSearch } from '../../context/search';
 import { AppImage } from '../../components/AppImage';
-import { getApps } from '@/service/protontweaks';
 import { Button } from '@/components/Button';
 import { ButtonGroup } from '@/components/ButtonGroup';
+import type { App } from '@/types';
+import SearchWorker from '@/workers/search.worker?worker';
 
-export async function loader() {
-  return await getApps();
-}
+const worker: Worker = new SearchWorker();
 
 export const Component: FC = () => {
-  const apps = useLoaderData<typeof loader>();
   const search = useSearch();
-  const filteredApps = useMemo(() => {
-    return apps.filter((app) => app.name.toLowerCase().includes(search.toLowerCase()));
-  }, [apps, search]);
+  const [filteredApps, setFilteredApps] = useState<App[]>([]);
+
+  useEffect(() => {
+    const listener = (event: MessageEvent<App[]>) => setFilteredApps(event.data);
+
+    worker.addEventListener('message', listener);
+
+    return () => {
+      worker.removeEventListener('message', listener);
+    };
+  }, []);
+
+  useEffect(() => {
+    worker.postMessage(search);
+  }, [search]);
 
   useEffect(() => {
     const listener = () => {};
@@ -37,7 +46,7 @@ export const Component: FC = () => {
   ) : (
     <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5 mx-auto">
       {filteredApps.map((app) => (
-        <AppImage key={app.id} id={app.id} to={`/apps/${app.id}`} />
+        <AppImage key={app.id} app={app} to={`/apps/${app.id}`} />
       ))}
     </div>
   );
