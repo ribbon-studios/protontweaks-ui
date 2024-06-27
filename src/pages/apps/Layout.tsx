@@ -14,9 +14,11 @@ export const Component: FC = () => {
         onChange={(value) => {
           navigate({
             pathname: '/apps',
-            search: `?${createSearchParams({
-              search: value,
-            })}`,
+            search: value
+              ? `?${createSearchParams({
+                  search: value,
+                })}`
+              : '',
           });
           setSearch(value);
         }}
