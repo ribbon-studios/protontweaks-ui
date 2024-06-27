@@ -16,9 +16,8 @@ export const Component: FC = () => {
     setLoading(true);
 
     SearchService.query(search)
-      .then((apps) => {
-        setFilteredApps(apps);
-      })
+      .then((apps) => setFilteredApps(apps))
+      .catch(() => console.log('debounced...'))
       .finally(() => {
         setLoading(false);
       });
