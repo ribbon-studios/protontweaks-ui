@@ -1,6 +1,9 @@
-export type AppsList = {
+export type ApiInfo = {
   sha: string;
   short_sha: string;
+};
+
+export type AppsList = ApiInfo & {
   apps: Pick<App, 'id' | 'name'>[];
 };
 

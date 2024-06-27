@@ -1,5 +1,9 @@
-import type { App, AppsList } from '../types';
+import type { ApiInfo, App, AppsList } from '../types';
 import { fetch } from '../utils/fetch';
+
+export async function getApiInfo() {
+  return await fetch<ApiInfo>('https://api.protontweaks.com/v4/info.json');
+}
 
 export async function getAppsList() {
   return await fetch<AppsList>('https://api.protontweaks.com/v4/apps.json');
