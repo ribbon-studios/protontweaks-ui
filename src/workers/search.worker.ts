@@ -11,6 +11,8 @@ async function filterApps(value: string) {
   // TODO: Add a method of getting an api version (git sha) and using it to enable caching and cache busting
   const apps = await getApps();
 
+  if (!value) return apps;
+
   const partials = value.split(' ').filter(Boolean);
 
   return apps
