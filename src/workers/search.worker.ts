@@ -2,9 +2,17 @@ import { getApps } from '@/service/protontweaks.service';
 import { delay } from '@ribbon-studios/js-utils';
 
 self.onmessage = async (event) => {
-  const [filteredApps] = await Promise.all([filterApps(event.data.toLowerCase()), delay(500)]);
+  try {
+    const [filteredApps] = await Promise.all([filterApps(event.data.toLowerCase()), delay(500)]);
 
-  self.postMessage(filteredApps);
+    self.postMessage({
+      result: filteredApps,
+    });
+  } catch {
+    self.postMessage({
+      error: 'Failed to retrieve apps!',
+    });
+  }
 };
 
 async function filterApps(value: string) {

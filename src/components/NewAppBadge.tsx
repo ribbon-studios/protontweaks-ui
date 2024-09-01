@@ -1,11 +1,11 @@
 import { useMemo, type FC } from 'react';
-import type { App } from '@/types';
+import type { ComputedApp, ThinApp } from '@/types';
 import { BadgePlus } from 'lucide-react';
 import { IconTooltip } from './IconTooltip';
 import { isAfter, parseISO, subWeeks } from 'date-fns';
 
 type Props = {
-  app: App;
+  app: ComputedApp<ThinApp>;
 };
 
 export const NewAppBadge: FC<Props> = ({ app }) => {

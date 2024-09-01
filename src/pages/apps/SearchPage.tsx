@@ -3,14 +3,14 @@ import { useSearch } from '../../context/search';
 import { AppImage } from '../../components/AppImage';
 import { Button } from '@/components/Button';
 import { ButtonGroup } from '@/components/ButtonGroup';
-import type { App } from '@/types';
+import type { ComputedApp, ThinApp } from '@/types';
 import { PageSpinner } from '@/components/PageSpinner';
 import { SearchService } from '@/service/search.service';
 import { ImageService } from '@/service/image.service';
 
 export const Component: FC = () => {
   const search = useSearch();
-  const [filteredApps, setFilteredApps] = useState<App[]>([]);
+  const [filteredApps, setFilteredApps] = useState<ComputedApp<ThinApp>[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,9 +22,12 @@ export const Component: FC = () => {
         await ImageService.preload(...apps.map((app) => app.image_url));
 
         setFilteredApps(apps);
+        setLoading(false);
       })
-      .catch(() => console.log('debounced...'))
-      .finally(() => {
+      .catch(({ message, debounce }) => {
+        if (debounce) return;
+
+        console.error(message);
         setLoading(false);
       });
   }, [search]);

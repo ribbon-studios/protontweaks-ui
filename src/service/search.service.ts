@@ -1,10 +1,10 @@
-import type { App, ComputedApp } from '@/types';
+import type { ComputedApp, ThinApp } from '@/types';
 import SearchWorker from '@/workers/search.worker?worker';
 
 let previousWorker: Worker;
 
 export class SearchService {
-  static async query(value: string): Promise<ComputedApp[]> {
+  static async query(value: string): Promise<ComputedApp<ThinApp>[]> {
     if (previousWorker) {
       previousWorker.terminate();
     }
@@ -14,13 +14,13 @@ export class SearchService {
     return new Promise((resolve, reject) => {
       previousWorker.addEventListener(
         'message',
-        (event: MessageEvent<App[]>) => {
-          resolve(
-            event.data.map((app) => ({
-              ...app,
-              image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
-            }))
-          );
+        (event) => {
+          if (event.data.error)
+            reject({
+              message: event.data.error,
+              debounce: false,
+            });
+          else resolve(event.data.result);
         },
         {
           once: true,
@@ -31,7 +31,10 @@ export class SearchService {
       ((terminate) => {
         previousWorker.terminate = function () {
           terminate.apply(previousWorker);
-          reject('Interupting due to new call');
+          reject({
+            message: 'Interupting due to new call',
+            debounce: true,
+          });
         };
       })(previousWorker.terminate);
 

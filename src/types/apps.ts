@@ -4,8 +4,10 @@ export type ApiInfo = {
 };
 
 export type AppsList = ApiInfo & {
-  apps: Pick<App, 'id' | 'name'>[];
+  apps: ThinApp[];
 };
+
+export type ThinApp = Pick<App, 'id' | 'name' | 'created_at' | 'updated_at'>;
 
 export type App = {
   id: string;
@@ -27,6 +29,6 @@ export type App = {
   updated_at: string;
 };
 
-export type ComputedApp = App & {
+export type ComputedApp<T extends ThinApp = App> = T & {
   image_url: string;
 };

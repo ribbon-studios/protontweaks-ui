@@ -1,4 +1,4 @@
-import type { ApiInfo, App, AppsList } from '../types';
+import type { ApiInfo, App, AppsList, ComputedApp, ThinApp } from '../types';
 import { fetch } from '../utils/fetch';
 
 export async function getApiInfo() {
@@ -18,11 +18,18 @@ export async function getAppRoutes() {
 export async function getApps() {
   const appsList = await getAppsList();
 
-  return appsList.apps;
+  return appsList.apps.map(getComputedApp);
 }
 
 export async function getApp(id: string) {
-  return await fetch<App>(`https://api.protontweaks.com/v4/${id}.json`);
+  return getComputedApp(await fetch<App>(`https://api.protontweaks.com/v4/${id}.json`));
+}
+
+export function getComputedApp<T extends ThinApp>(app: T): ComputedApp<T> {
+  return {
+    ...app,
+    image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
+  };
 }
 
 export enum AppSettingStatus {
