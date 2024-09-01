@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '../utils/cn';
 import * as styles from './AppImage.module.css';
 import type { App } from '@/types';
+import { NewAppBadge } from './NewAppBadge';
 
 type Props = {
   className?: string;
@@ -15,6 +16,7 @@ export const AppImage: FC<Props> = ({ className, app, to }) => {
 
   return to ? (
     <Link className={cn(styles.appImage, 'group', className)} to={to}>
+      <NewAppBadge app={app} />
       <div className="absolute inset-0 overflow-hidden flex flex-col justify-end">
         <div className={styles.name}>{app.name}</div>
       </div>
@@ -23,6 +25,7 @@ export const AppImage: FC<Props> = ({ className, app, to }) => {
     </Link>
   ) : (
     <div className={cn(styles.appImage, className)}>
+      <NewAppBadge app={app} />
       <img src={url} />
       <img className="blur-sm opacity-80 absolute inset-0 -z-10 transition-all" src={url} />
     </div>

@@ -1,7 +1,7 @@
 .appImage {
   @apply relative rounded-md;
 
-  > * {
+  > img {
     border-radius: inherit;
   }
 }

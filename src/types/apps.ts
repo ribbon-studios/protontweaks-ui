@@ -23,4 +23,6 @@ export type App = {
     solution: string | null;
     description: string;
   }[];
+  created_at: string;
+  updated_at: string;
 };
