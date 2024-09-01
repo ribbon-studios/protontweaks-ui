@@ -3,7 +3,7 @@ import Sitemap from 'vite-plugin-sitemap';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 import { defineConfig } from 'vitest/config';
-import { getAppRoutes } from './src/service/protontweaks';
+import { getAppRoutes } from './src/service/protontweaks.service';
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => {

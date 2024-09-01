@@ -1,4 +1,4 @@
-import { getApps } from '@/service/protontweaks';
+import { getApps } from '@/service/protontweaks.service';
 import { delay } from '@ribbon-studios/js-utils';
 
 self.onmessage = async (event) => {

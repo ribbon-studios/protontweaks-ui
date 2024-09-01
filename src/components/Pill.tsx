@@ -1,4 +1,4 @@
-import { AppSettingStatus } from '@/service/protontweaks';
+import { AppSettingStatus } from '@/service/protontweaks.service';
 import { cn } from '@/utils/cn';
 import type { FC, ReactNode } from 'react';
 

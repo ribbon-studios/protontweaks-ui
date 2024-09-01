@@ -6,7 +6,7 @@ import { Label } from '../../components/Label';
 import { Pill, appSettingStatustoVariant } from '../../components/Pill';
 import { Card } from '../../components/Card';
 import { Code } from '../../components/Code';
-import { getApp, getAppSettingStatus, toLaunchOptions } from '@/service/protontweaks';
+import { getApp, getAppSettingStatus, toLaunchOptions } from '@/service/protontweaks.service';
 import type { App } from '@/types';
 import { Button } from '@/components/Button';
 import { ButtonGroup } from '@/components/ButtonGroup';

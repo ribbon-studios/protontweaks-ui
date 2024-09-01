@@ -26,3 +26,7 @@ export type App = {
   created_at: string;
   updated_at: string;
 };
+
+export type ComputedApp = App & {
+  image_url: string;
+};

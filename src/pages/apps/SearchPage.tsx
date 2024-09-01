@@ -5,7 +5,8 @@ import { Button } from '@/components/Button';
 import { ButtonGroup } from '@/components/ButtonGroup';
 import type { App } from '@/types';
 import { PageSpinner } from '@/components/PageSpinner';
-import { SearchService } from '@/service/search';
+import { SearchService } from '@/service/search.service';
+import { ImageService } from '@/service/image.service';
 
 export const Component: FC = () => {
   const search = useSearch();
@@ -16,7 +17,12 @@ export const Component: FC = () => {
     setLoading(true);
 
     SearchService.query(search)
-      .then((apps) => setFilteredApps(apps))
+      .then(async (apps) => {
+        // Preload the images to prevent content from jumping
+        await ImageService.preload(...apps.map((app) => app.image_url));
+
+        setFilteredApps(apps);
+      })
       .catch(() => console.log('debounced...'))
       .finally(() => {
         setLoading(false);
