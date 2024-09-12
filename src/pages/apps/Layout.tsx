@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 import { Outlet, createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { AppHeader } from '../../components/AppHeader';
+import { AppHeader } from '@/components/layout/AppHeader';
 import { SearchContext } from '../../context/search';
 
 export const Component: FC = () => {

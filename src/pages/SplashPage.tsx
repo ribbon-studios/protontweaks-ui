@@ -1,9 +1,9 @@
 import { type FC } from 'react';
 import * as styles from './SplashPage.module.css';
-import { Code } from '@/components/Code';
-import { Button } from '@/components/Button';
+import { Code } from '@/components/common/Code';
+import { Button } from '@/components/common/Button';
 import { CodeIcon, ExternalLink, LibraryBig } from 'lucide-react';
-import { ButtonGroup } from '@/components/ButtonGroup';
+import { ButtonGroup } from '@/components/common/ButtonGroup';
 
 export const Component: FC = () => {
   return (

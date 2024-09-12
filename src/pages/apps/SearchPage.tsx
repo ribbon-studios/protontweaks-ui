@@ -1,10 +1,10 @@
 import { type FC, useEffect, useState } from 'react';
 import { useSearch } from '../../context/search';
-import { AppImage } from '../../components/AppImage';
-import { Button } from '@/components/Button';
-import { ButtonGroup } from '@/components/ButtonGroup';
+import { AppImage } from '@/components/app/AppImage';
+import { Button } from '@/components/common/Button';
+import { ButtonGroup } from '@/components/common/ButtonGroup';
 import type { ComputedApp, ThinApp } from '@/types';
-import { PageSpinner } from '@/components/PageSpinner';
+import { PageSpinner } from '@/components/common/PageSpinner';
 import { SearchService } from '@/service/search.service';
 import { ImageService } from '@/service/image.service';
 

@@ -1,5 +1,5 @@
 import { type FC, type ComponentProps } from 'react';
-import { cn } from '../utils/cn';
+import { cn } from '@/utils/cn';
 import { X } from 'lucide-react';
 import { useCachedState } from '@ribbon-studios/react-utils';
 

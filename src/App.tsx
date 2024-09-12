@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { AppFooter } from './components/AppFooter';
+import { AppFooter } from '@/components/layout/AppFooter';
 import * as styles from './App.module.css';
 
 export const Component: FC = () => {

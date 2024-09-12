@@ -1,9 +1,9 @@
 import { type FC } from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '../utils/cn';
+import { cn } from '@/utils/cn';
 import * as styles from './AppImage.module.css';
 import type { ComputedApp, ThinApp } from '@/types';
-import { NewAppBadge } from './NewAppBadge';
+import { AppBadges } from './AppBadges';
 
 type Props = {
   className?: string;
@@ -14,7 +14,7 @@ type Props = {
 export const AppImage: FC<Props> = ({ className, app, to }) => {
   return to ? (
     <Link className={cn(styles.appImage, 'group', className)} to={to}>
-      <NewAppBadge app={app} />
+      <AppBadges app={app} />
       <div className="absolute inset-0 overflow-hidden flex flex-col justify-end">
         <div className={styles.name}>{app.name}</div>
       </div>
@@ -26,7 +26,7 @@ export const AppImage: FC<Props> = ({ className, app, to }) => {
     </Link>
   ) : (
     <div className={cn(styles.appImage, className)}>
-      <NewAppBadge app={app} />
+      <AppBadges app={app} />
       <img src={app.image_url} />
       <img className="blur-sm opacity-80 absolute inset-0 -z-10 transition-all" src={app.image_url} />
     </div>

@@ -1,6 +1,6 @@
 import { type ComponentProps, type FC, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '../utils/cn';
+import { cn } from '@/utils/cn';
 import * as styles from './Button.module.css';
 
 type SharedProps = {

@@ -1,10 +1,11 @@
 import { useEffect, type FC, useState } from 'react';
-import { useSearch } from '../context/search';
+import { useSearch } from '../../context/search';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowUp, Edit } from 'lucide-react';
-import { cn } from '../utils/cn';
-import { Button } from './Button';
-import { Input } from './Input';
+import { cn } from '@/utils/cn';
+import { Button } from '../common/Button';
+import { Input } from '../common/Input';
+import { AppQuickEdit } from './AppEditButton';
 
 type Props = {
   onChange?: (value: string) => void;
@@ -46,16 +47,7 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
         </Link>
         <div className="flex flex-1 gap-4">
           <Input value={search} placeholder="Search" onChange={onChange} />
-          <Button
-            className="flex-shrink-0 bg-accent"
-            to={
-              id
-                ? `https://github.com/ribbon-studios/protontweaks-db/edit/main/apps/${id}.json`
-                : 'https://github.com/ribbon-studios/protontweaks-db/tree/main/apps'
-            }
-          >
-            <Edit />
-          </Button>
+          <AppQuickEdit id={id} />
         </div>
       </div>
       <Button

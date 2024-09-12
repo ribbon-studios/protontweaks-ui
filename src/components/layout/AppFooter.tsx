@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Bug, Code2 } from 'lucide-react';
-import { Button } from './Button';
+import { Button } from '@/components/common/Button';
 
 export const AppFooter: FC = () => {
   return (

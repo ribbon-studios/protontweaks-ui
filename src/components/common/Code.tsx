@@ -1,5 +1,5 @@
 import { useState, type FC, type ReactNode } from 'react';
-import { cn } from '../utils/cn';
+import { cn } from '@/utils/cn';
 import { toast } from 'sonner';
 import { delay } from '@ribbon-studios/js-utils';
 import { Clipboard } from 'lucide-react';
