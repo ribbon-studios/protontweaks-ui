@@ -1,4 +1,4 @@
-import { type FC, useEffect, useState } from 'react';
+import { type FC, useEffect, useMemo, useState } from 'react';
 import { useSearch } from '../../context/search';
 import { AppImage } from '@/components/app/AppImage';
 import { Button } from '@/components/common/Button';
@@ -10,7 +10,14 @@ import { ImageService } from '@/service/image.service';
 
 export const Component: FC = () => {
   const search = useSearch();
-  const [filteredApps, setFilteredApps] = useState<ComputedApp<ThinApp>[]>([]);
+  const [apps, setApps] = useState<ComputedApp<ThinApp>[]>([]);
+  const filteredApps = useMemo(() => {
+    // If we have a search query then display all apps
+    if (search) return apps;
+    // Otherwise only display the apps that aren't new
+    return apps.filter((app) => !app.badges.is_new);
+  }, [apps, search]);
+  const newApps = useMemo(() => apps.filter((app) => app.badges.is_new), [apps]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +28,7 @@ export const Component: FC = () => {
         // Preload the images to prevent content from jumping
         await ImageService.preload(...apps.map((app) => app.image_url));
 
-        setFilteredApps(apps);
+        setApps(apps);
         setLoading(false);
       })
       .catch(({ message, debounce }) => {
@@ -45,19 +52,32 @@ export const Component: FC = () => {
 
   return (
     <PageSpinner loading={loading}>
-      {filteredApps.length === 0 ? (
-        <ButtonGroup className="w-fit self-center" label="Can't find the game you're looking for?" vertical>
-          <Button variant="slim" to="https://github.com/ribbon-studios/protontweaks-db/tree/main/apps">
-            Help us out and add it!~ ❤️
-          </Button>
-        </ButtonGroup>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5 mx-auto">
-          {filteredApps.map((app) => (
-            <AppImage key={app.id} app={app} to={`/apps/${app.id}`} />
-          ))}
-        </div>
-      )}
+      <div className="flex flex-col gap-5 mx-auto">
+        {!search && newApps.length > 0 && (
+          <>
+            <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Newly added Apps!</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5">
+              {newApps.map((app) => (
+                <AppImage key={app.id} app={app} to={`/apps/${app.id}`} />
+              ))}
+            </div>
+            <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Other Apps</h1>
+          </>
+        )}
+        {filteredApps.length === 0 ? (
+          <ButtonGroup className="w-fit self-center" label="Can't find the game you're looking for?" vertical>
+            <Button variant="slim" to="https://github.com/ribbon-studios/protontweaks-db/tree/main/apps">
+              Help us out and add it!~ ❤️
+            </Button>
+          </ButtonGroup>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5 mx-auto">
+            {filteredApps.map((app) => (
+              <AppImage key={app.id} app={app} to={`/apps/${app.id}`} />
+            ))}
+          </div>
+        )}
+      </div>
     </PageSpinner>
   );
 };
