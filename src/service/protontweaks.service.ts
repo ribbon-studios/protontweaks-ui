@@ -1,3 +1,4 @@
+import { isAfter, parseISO, subWeeks } from 'date-fns';
 import type { ApiInfo, App, AppsList, ComputedApp, ThinApp } from '../types';
 import { fetch } from '../utils/fetch';
 
@@ -29,6 +30,9 @@ export function getComputedApp<T extends ThinApp>(app: T): ComputedApp<T> {
   return {
     ...app,
     image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
+    badges: {
+      is_new: isAfter(parseISO(app.created_at), subWeeks(new Date(), 1)),
+    },
   };
 }
 

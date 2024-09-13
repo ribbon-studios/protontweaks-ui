@@ -31,4 +31,7 @@ export type App = {
 
 export type ComputedApp<T extends ThinApp = App> = T & {
   image_url: string;
+  badges: {
+    is_new: boolean;
+  };
 };
