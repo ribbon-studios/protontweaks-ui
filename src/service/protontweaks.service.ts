@@ -26,7 +26,7 @@ export async function getApp(id: string) {
   return getComputedApp(await fetch<App>(`https://api.protontweaks.com/v4/${id}.json`));
 }
 
-export function getComputedApp<T extends ThinApp>(app: T): ComputedApp<T> {
+export function getComputedApp<T extends Omit<ThinApp, 'has'>>(app: T): ComputedApp<T> {
   return {
     ...app,
     image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,

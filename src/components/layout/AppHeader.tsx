@@ -46,7 +46,7 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
           Protontweaks
         </Link>
         <div className="flex flex-1 gap-4">
-          <Input value={search} placeholder="Search" onChange={onChange} />
+          <Input value={search} placeholder="Search (e.g. 'Frostpunk', 'has:tricks')" onChange={onChange} />
           <AppQuickEdit id={id} />
         </div>
       </div>
