@@ -42,7 +42,7 @@ export const AppHeader: FC<Props> = ({ onChange }) => {
           sticky && 'sm:mx-5 sm:top-5 sm:rounded-full border-white/10'
         )}
       >
-        <Link to="/" className="text-2xl text-center hover:text-pink-300 transition-colors" role="heading">
+        <Link to="/apps" className="text-2xl text-center hover:text-pink-300 transition-colors" role="heading">
           Protontweaks
         </Link>
         <div className="flex flex-1 gap-4">
