@@ -40,5 +40,6 @@ export type ComputedApp<T extends Omit<ThinApp, 'has'> = App> = T & {
   image_url: string;
   badges: {
     is_new: boolean;
+    is_recently_updated: boolean;
   };
 };

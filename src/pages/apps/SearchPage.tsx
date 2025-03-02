@@ -17,7 +17,7 @@ export const Component: FC = () => {
     // Otherwise only display the apps that aren't new
     return apps.filter((app) => !app.badges.is_new);
   }, [apps, search]);
-  const newApps = useMemo(() => apps.filter((app) => app.badges.is_new), [apps]);
+  const recentlyUpdatedApps = useMemo(() => apps.filter((app) => app.badges.is_recently_updated), [apps]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,11 +53,11 @@ export const Component: FC = () => {
   return (
     <PageSpinner loading={loading}>
       <div className="flex flex-col gap-5 mx-auto">
-        {!search && newApps.length > 0 && (
+        {!search && recentlyUpdatedApps.length > 0 && (
           <>
-            <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Newly added Apps!</h1>
+            <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Recently Updated!</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-5">
-              {newApps.map((app) => (
+              {recentlyUpdatedApps.map((app) => (
                 <AppImage key={app.id} app={app} to={`/apps/${app.id}`} />
               ))}
             </div>

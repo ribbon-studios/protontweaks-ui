@@ -32,6 +32,7 @@ export function getComputedApp<T extends Omit<ThinApp, 'has'>>(app: T): Computed
     image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
     badges: {
       is_new: isAfter(parseISO(app.created_at), subWeeks(new Date(), 1)),
+      is_recently_updated: isAfter(parseISO(app.updated_at), subWeeks(new Date(), 1)),
     },
   };
 }

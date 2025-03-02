@@ -8,11 +8,13 @@ type Props = {
 };
 
 export const AppBadges: FC<Props> = ({ app }) => {
-  if (!app.badges.is_new) return null;
+  if (app.badges.is_new) {
+    return (
+      <IconTooltip className="absolute top-1 right-1" icon={BadgePlus}>
+        NEW!
+      </IconTooltip>
+    );
+  }
 
-  return (
-    <IconTooltip className="absolute top-1 right-1" icon={BadgePlus}>
-      NEW!
-    </IconTooltip>
-  );
+  return null;
 };
