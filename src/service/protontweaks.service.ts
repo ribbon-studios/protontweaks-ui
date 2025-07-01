@@ -29,7 +29,7 @@ export async function getApp(id: string) {
 export function getComputedApp<T extends Omit<ThinApp, 'has'>>(app: T): ComputedApp<T> {
   return {
     ...app,
-    image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
+    image_url: IMAGE_OVERRIDES[app.id] ?? `https://steamcdn-a.akamaihd.net/steam/apps/${app.id}/header.jpg`,
     badges: {
       is_new: isAfter(parseISO(app.created_at), subWeeks(new Date(), 1)),
       is_recently_updated: isAfter(parseISO(app.updated_at), subWeeks(new Date(), 1)),
@@ -62,3 +62,8 @@ export function toLaunchOptions(app: App) {
 
   return launchOptions.join(' ');
 }
+
+const IMAGE_OVERRIDES: Record<string, string> = {
+  '3527290':
+    'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3527290/31bac6b2eccf09b368f5e95ce510bae2baf3cfcd/header.jpg',
+};
