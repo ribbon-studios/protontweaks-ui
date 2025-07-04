@@ -7,6 +7,7 @@ import type { ComputedApp, ThinApp } from '@/types';
 import { PageSpinner } from '@/components/common/PageSpinner';
 import { SearchService } from '@/service/search.service';
 import { ImageService } from '@/service/image.service';
+import { useAppLink } from '@/hooks/use-app-link';
 
 export const Component: FC = () => {
   const search = useSearch();
@@ -19,6 +20,7 @@ export const Component: FC = () => {
   }, [apps, search]);
   const recentlyUpdatedApps = useMemo(() => apps.filter((app) => app.badges.is_recently_updated), [apps]);
   const [loading, setLoading] = useState(true);
+  const to = useAppLink();
 
   useEffect(() => {
     setLoading(true);
@@ -66,7 +68,7 @@ export const Component: FC = () => {
         )}
         {filteredApps.length === 0 ? (
           <ButtonGroup className="w-fit self-center" label="Can't find the game you're looking for?" vertical>
-            <Button variant="slim" to="https://github.com/ribbon-studios/protontweaks-db/tree/main/apps">
+            <Button variant="slim" to={to}>
               Help us out and add it!~ ❤️
             </Button>
           </ButtonGroup>
